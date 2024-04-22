@@ -19,3 +19,12 @@ Desencriptador basado en AES en un FPGA
 
 | Supervisors  |                Israel, José Aguilar, Ezzat y Ricardo             |
 |--------------|------------------------------------------------------------------|
+
+## Modules
+|               |    Modules    |
+|---------------|---------------|
+|    AddRound   |     Done      |
+|    SubBytes   |     Pending   |
+|    MixColumn  |     Pending   |
+|    ShiftRow   |     Pending   |
+
