@@ -12,14 +12,6 @@ Desencriptador basado en AES en un FPGA
 |--------------|-----------------------------------------------------------------------|
 
 
-## Colaboradores del módulo de llaves
-|               |                              Module                             |
-|---------------|-----------------------------------------------------------------|
-|     Keys      | Eduardo, Mario, Kevin, Diego, Arles, Sebastián, Emiliano, Grant |
-
-| Supervisors  |                Israel, José Aguilar, Ezzat y Ricardo             |
-|--------------|------------------------------------------------------------------|
-
 ## Modules
 |               |    Modules    |
 |---------------|---------------|
