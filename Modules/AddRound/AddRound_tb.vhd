@@ -52,7 +52,7 @@ architecture InvAddRoundKey_Arch of AddRound_tb is
 	
 begin
   -- Instantiate the Unit Under Test (UUT)
-  uut: InvAddRoundKey
+  uut: AddRound
     port map (
       Clk     => Clk,
       Start   => Start,
