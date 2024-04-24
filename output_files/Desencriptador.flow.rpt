@@ -162,4 +162,3 @@ quartus_sta Desencriptador -c Desencriptador
 quartus_eda --read_settings_files=off --write_settings_files=off Desencriptador -c Desencriptador
 
 
-

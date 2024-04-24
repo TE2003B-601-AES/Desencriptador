@@ -20,6 +20,7 @@ Quartus Prime Version 21.1.0 Build 842 10/21/2021 SJ Lite Edition
 
 
 
+
 ----------------
 ; Legal Notice ;
 ----------------
@@ -308,5 +309,4 @@ Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 2 warnings
     Info: Processing ended: Wed Apr 24 12:39:22 2024
     Info: Elapsed time: 00:00:18
     Info: Total CPU time (on all processors): 00:00:22
-
 
