@@ -1,11 +1,12 @@
 ----------------------------------------------------------------------------------
 -- Company:				ITESM - IRS 2024
 -- 
--- Create Date: 		16/04/2024
--- Design Name: 		Keys
--- Module Name:		Keys Module
+-- Create Date: 		17/04/2024
+-- Design Name: 		Desencriptador
+-- Module Name:		Top Module
+-- Project Name: 		Desencriptador AES
 -- Target Devices: 	DE10-Lite
--- Description: 		Keys generator Module
+-- Description: 		Desencriptador basado en el AES
 --
 -- Version 0.0 - File Creation
 -- Additional Comments: 
@@ -52,3 +53,5 @@ begin
     end process;
 
 end Behavioral;
+
+

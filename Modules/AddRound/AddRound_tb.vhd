@@ -1,82 +1,95 @@
-----------------------------------------------------------------------------------
--- Company:				ITESM - IRS 2024
--- 
--- Create Date: 		17/04/2024
--- Design Name: 		Add Round TestBench
--- Module Name:		Add Round Module TestBench
--- Target Devices: 	DE10-Lite
--- Description: 		TestBench del módulo Add Round
---
--- Version 0.0 - File Creation
--- Additional Comments: 
---
-----------------------------------------------------------------------------------
-
--- Commonly used libraries
+---------------------------------------------------------------
+-- Company: ITESM - Campus Qro.entity
+-- Author: Alexa Jimena González Lucio
+--         Brisa Itzel Reyes Castro
+-- Date: 22/04/2024
+-- Desing: ROM 16x4
+-- Description:  Add Round Key for Decryption / Test bench 1
+-- Tool Version: Altera Quartus Lite v21.2 build 842
+-- Target Device: DE10-Lite (Terasic.com)
+-- Version: 1.0
+---------------------------------------------------------------
+-- Library and Packages usage definition
 library IEEE;
 use IEEE.std_logic_1164.all;
 use IEEE.numeric_std.all;
 use IEEE.std_logic_unsigned.all;
 
--- Entity declaration for testbench
-entity YourEntityName_tb is
-end YourEntityName_tb;
+entity AddRound_tb is
+end AddRound_tb;
 
--- Architecture definition for testbench
-architecture tb_architecture of YourEntityName_tb is
+architecture InvAddRoundKey_Arch of AddRound_tb is
+  -- Component declaration
+  component AddRound
+    Port (
+      Clk     : in     std_logic;
+      Start   : in     std_logic;
+      Finish  : out    std_logic;
+      DataIn  : in     std_logic_vector (127 downto 0);
+      DataOut : out    std_logic_vector (127 downto 0)
+    );
+  end component;
 
-    -- Constants declaration
-    constant CLK_PERIOD : time := 10 ns;  -- Clock period (adjust as needed)
+  -- Constants
+  
+  constant CLK_PERIOD    : time := 10 ns;  -- clock period (10 ns)
+  constant SIM_TIME      : time := 100 us; -- Simulation duration (100 µs)
 
-    -- Signals declaration
-    signal input_port_1_tb : std_logic := '0';  -- Test input signals
-    signal input_port_2_tb : std_logic := '0';
-    signal output_port_1_tb : std_logic;  -- Test output signals
-    signal output_port_2_tb : std_logic;
+  -- Signals
+  signal Clk       : std_logic := '0';
+  signal Start     : std_logic := '0';
+  signal Finish    : std_logic;
+  signal DataIn    : std_logic_vector(127 downto 0):= "00111001" & "00000010" & "11011100" & "00011001" &
+																		"00100101" & "11011100" & "00010001" & "01101010" &
+																		"10000100" & "00001001" & "10000101" & "00001011" &
+																		"00011101" & "11111011" & "10010111" & "00110010";
 
-    -- Component declaration for DUT (Device Under Test)
-    component YourEntityName
-        Port (
-            input_port_1 : in std_logic;
-            input_port_2 : in std_logic;
-            output_port_1 : out std_logic;
-            output_port_2 : out std_logic
-        );
-    end component;
+  signal Key       : std_logic_vector (127 downto 0):= "11010000" & "11001001" & "11100001" & "10110000" &
+																     	 "00010100" & "11101110" & "00111111" & "01100011" &
+																	    "11111001" & "00100101" & "00001100" & "00001100" &
+																	  	 "10101000" & "10001001" & "11001000" & "10100110";
+	signal DataOut   : std_logic_vector(127 downto 0);
+	
+begin
+  -- Instantiate the Unit Under Test (UUT)
+  uut: AddRound
+    port map (
+      Clk     => Clk,
+      Start   => Start,
+      Finish  => Finish,
+      DataIn  => DataIn,
+      DataOut => DataOut
+    );
 
-    -- Clock process
-    process
-    begin
-        while now < 1000 ns loop  -- Simulate for 1000 ns
-            wait for CLK_PERIOD / 2;
-            input_port_1_tb <= not input_port_1_tb;  -- Toggle the clock
-        end loop;
-        wait;
-    end process;
+  -- Clock process
+  Clk_Process: process
+  begin
+    while now < SIM_TIME loop
+      Clk <= '0';
+      wait for CLK_PERIOD / 2;  --Wait half of the clock period (5 ns).
+      Clk <= '1';
+      wait for CLK_PERIOD / 2;  --Wait half of the clock period (5 ns).
+    end loop;
+    wait;  -- wait till the end of simulation
+  end process;
 
-    -- Stimulus process
-    process
-    begin
-        -- Stimulus generation here
-        -- You can write test vectors or any stimuli for your inputs here
-        -- Example:
-        input_port_2_tb <= '0';
-        wait for 20 ns;
-        input_port_2_tb <= '1';
-        wait for 40 ns;
-        input_port_2_tb <= '0';
-        wait;
-    end process;
+  -- Stimulus process
+  Stimulus: process
+  begin
+	--- hold reset state for 100ns, always include the following statement
+	wait for 100 ns;
+	
+ -- input values
+	Start <= '1';
+   DataIn <="00111001" & "00000010" & "11011100" & "00011001" &
+				"00100101" & "11011100" & "00010001" & "01101010" &
+				"10000100" & "00001001" & "10000101" & "00001011" &
+				"00011101" & "11111011" & "10010111" & "00110010";
+				
+  
+    wait for 20 ns;
 
-    -- Instantiate the DUT
-    begin
-        dut: YourEntityName
-            port map (
-                input_port_1 => input_port_1_tb,
-                input_port_2 => input_port_2_tb,
-                output_port_1 => output_port_1_tb,
-                output_port_2 => output_port_2_tb
-            );
-    end architecture tb_architecture;
+    wait;
+  end process;
 
-end YourEntityName_tb;
+end InvAddRoundKey_Arch;
