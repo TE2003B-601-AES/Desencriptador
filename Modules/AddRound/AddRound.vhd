@@ -1,4 +1,4 @@
--- Company:          ITESM - CQ
+-- Company:      	 ITESM - CQ
 -- Engineer:       Alexa Jimena González Lucio
 -- 				  	 Brisa Itzel Reyes Castro 
 -- Create Date:    20/April/2024 
