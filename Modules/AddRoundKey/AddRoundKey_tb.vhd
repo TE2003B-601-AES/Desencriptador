@@ -15,12 +15,12 @@ use IEEE.std_logic_1164.all;
 use IEEE.numeric_std.all;
 use IEEE.std_logic_unsigned.all;
 
-entity AddRound_tb is
-end AddRound_tb;
+entity AddRoundKey_tb is
+end AddRoundKey_tb;
 
-architecture InvAddRoundKey_Arch of AddRound_tb is
+architecture InvAddRoundKey_Arch of AddRoundKey_tb is
   -- Component declaration
-  component AddRound
+  component AddRoundKey
     Port (
       Clk     : in     std_logic;
       Start   : in     std_logic;
@@ -52,7 +52,7 @@ architecture InvAddRoundKey_Arch of AddRound_tb is
 	
 begin
   -- Instantiate the Unit Under Test (UUT)
-  uut: AddRound
+  uut: AddRoundKey
     port map (
       Clk     => Clk,
       Start   => Start,

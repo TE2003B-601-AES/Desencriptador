@@ -19,14 +19,14 @@ use IEEE.numeric_std.all;
 use IEEE.std_logic_unsigned.all;
 
 -- Entity declaration for testbench
-entity MixColumn_tb is
-end MixColumn_tb;
+entity MixColumns_tb is
+end MixColumns_tb;
 
 -- Architecture definition for testbench
-architecture tb_architecture of MixColumn_tb is
+architecture tb_architecture of MixColumns_tb is
 
      -- Component declaration for DUT (Device Under Test)
-    component MixColumn
+    component MixColumns
         Port (
             input_port_1 : in std_logic;
             input_port_2 : in std_logic;
@@ -46,7 +46,7 @@ architecture tb_architecture of MixColumn_tb is
 
 	-- Instantiate the DUT
     begin
-        dut: MixColumn
+        dut: MixColumns
             port map (
                 input_port_1 => input_port_1_tb,
                 input_port_2 => input_port_2_tb,

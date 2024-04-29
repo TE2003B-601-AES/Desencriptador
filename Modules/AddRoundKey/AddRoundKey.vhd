@@ -24,16 +24,16 @@ use IEEE.numeric_std.all;
 use IEEE.std_logic_unsigned.all;
 
 -- Entity Section
-entity AddRound is
+entity AddRoundKey is
   Port (Clk     : in     std_logic;
 		  Start   : in     std_logic := '0'; -- Start flag
         Finish  : out    std_logic := '0'; -- End flag
 		  DataIn  : in     std_logic_vector (127 downto 0);  -- ciphered text
 		  DataOut : out    std_logic_vector (127 downto 0)); -- After mixColumns matrix block		  
-end AddRound;
+end AddRoundKey;
 
 -- Section 3: Define the contents of your entity
-architecture InvAddRoundKey_Arch of AddRound is
+architecture InvAddRoundKey_Arch of AddRoundKey is
 	-- states definition
 	type state_values is (S0, S1);
 	signal next_state, present_state : state_values;
