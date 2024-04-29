@@ -1,5 +1,5 @@
 Analysis & Synthesis report for Desencriptador
-Wed Apr 24 12:53:08 2024
+Sun Apr 28 18:03:10 2024
 Quartus Prime Version 21.1.0 Build 842 10/21/2021 SJ Lite Edition
 
 
@@ -43,7 +43,7 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Wed Apr 24 12:53:08 2024       ;
+; Analysis & Synthesis Status        ; Successful - Sun Apr 28 18:03:10 2024       ;
 ; Quartus Prime Version              ; 21.1.0 Build 842 10/21/2021 SJ Lite Edition ;
 ; Revision Name                      ; Desencriptador                              ;
 ; Top-level Entity Name              ; Top                                         ;
@@ -153,8 +153,8 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------+-------------+
 ; Processors                 ; Number      ;
 +----------------------------+-------------+
-; Number detected on machine ; 8           ;
-; Maximum allowed            ; 8           ;
+; Number detected on machine ; 12          ;
+; Maximum allowed            ; 12          ;
 ;                            ;             ;
 ; Average used               ; 1.00        ;
 ; Maximum used               ; 1           ;
@@ -164,13 +164,13 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------+-------------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                       ;
-+----------------------------------+-----------------+-----------------+-----------------------------------------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path                                                ; Library ;
-+----------------------------------+-----------------+-----------------+-----------------------------------------------------------------------------+---------+
-; Top.vhd                          ; yes             ; User VHDL File  ; E:/ricki/Documents/TEC/4Semestre/QuartusProjects/AES/Desencriptador/Top.vhd ;         ;
-+----------------------------------+-----------------+-----------------+-----------------------------------------------------------------------------+---------+
++--------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                 ;
++----------------------------------+-----------------+-----------------+-----------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path                                          ; Library ;
++----------------------------------+-----------------+-----------------+-----------------------------------------------------------------------+---------+
+; Top.vhd                          ; yes             ; User VHDL File  ; C:/Quartus/quartus/bin64/PROYECTOS_QUARTUS/AES/Desencriptador/Top.vhd ;         ;
++----------------------------------+-----------------+-----------------+-----------------------------------------------------------------------+---------+
 
 
 +------------------------------------------------------------------+
@@ -250,7 +250,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:00     ;
+; Top            ; 00:00:01     ;
 +----------------+--------------+
 
 
@@ -260,42 +260,42 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 21.1.0 Build 842 10/21/2021 SJ Lite Edition
-    Info: Processing started: Wed Apr 24 12:52:50 2024
+    Info: Processing started: Sun Apr 28 18:02:55 2024
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Desencriptador -c Desencriptador
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
-Info (20030): Parallel compilation is enabled and will use 8 of the 8 processors detected
+Info (20030): Parallel compilation is enabled and will use 12 of the 12 processors detected
 Info (12021): Found 2 design units, including 1 entities, in source file top.vhd
-    Info (12022): Found design unit 1: Top-Behavioral File: E:/ricki/Documents/TEC/4Semestre/QuartusProjects/AES/Desencriptador/Top.vhd Line: 35
-    Info (12023): Found entity 1: Top File: E:/ricki/Documents/TEC/4Semestre/QuartusProjects/AES/Desencriptador/Top.vhd Line: 23
+    Info (12022): Found design unit 1: Top-Behavioral File: C:/Quartus/quartus/bin64/PROYECTOS_QUARTUS/AES/Desencriptador/Top.vhd Line: 35
+    Info (12023): Found entity 1: Top File: C:/Quartus/quartus/bin64/PROYECTOS_QUARTUS/AES/Desencriptador/Top.vhd Line: 23
 Info (12021): Found 2 design units, including 1 entities, in source file top_tb.vhd
-    Info (12022): Found design unit 1: Top_tb-tb_architecture File: E:/ricki/Documents/TEC/4Semestre/QuartusProjects/AES/Desencriptador/Top_tb.vhd Line: 26
-    Info (12023): Found entity 1: Top_tb File: E:/ricki/Documents/TEC/4Semestre/QuartusProjects/AES/Desencriptador/Top_tb.vhd Line: 22
+    Info (12022): Found design unit 1: Top_tb-tb_architecture File: C:/Quartus/quartus/bin64/PROYECTOS_QUARTUS/AES/Desencriptador/Top_tb.vhd Line: 26
+    Info (12023): Found entity 1: Top_tb File: C:/Quartus/quartus/bin64/PROYECTOS_QUARTUS/AES/Desencriptador/Top_tb.vhd Line: 22
 Info (12021): Found 2 design units, including 1 entities, in source file modules/addround/addround.vhd
-    Info (12022): Found design unit 1: AddRound-InvAddRoundKey_Arch File: E:/ricki/Documents/TEC/4Semestre/QuartusProjects/AES/Desencriptador/Modules/AddRound/AddRound.vhd Line: 36
-    Info (12023): Found entity 1: AddRound File: E:/ricki/Documents/TEC/4Semestre/QuartusProjects/AES/Desencriptador/Modules/AddRound/AddRound.vhd Line: 27
+    Info (12022): Found design unit 1: AddRound-InvAddRoundKey_Arch File: C:/Quartus/quartus/bin64/PROYECTOS_QUARTUS/AES/Desencriptador/Modules/AddRound/AddRound.vhd Line: 36
+    Info (12023): Found entity 1: AddRound File: C:/Quartus/quartus/bin64/PROYECTOS_QUARTUS/AES/Desencriptador/Modules/AddRound/AddRound.vhd Line: 27
 Info (12021): Found 2 design units, including 1 entities, in source file modules/addround/addround_tb.vhd
-    Info (12022): Found design unit 1: AddRound_tb-InvAddRoundKey_Arch File: E:/ricki/Documents/TEC/4Semestre/QuartusProjects/AES/Desencriptador/Modules/AddRound/AddRound_tb.vhd Line: 21
-    Info (12023): Found entity 1: AddRound_tb File: E:/ricki/Documents/TEC/4Semestre/QuartusProjects/AES/Desencriptador/Modules/AddRound/AddRound_tb.vhd Line: 18
+    Info (12022): Found design unit 1: AddRound_tb-InvAddRoundKey_Arch File: C:/Quartus/quartus/bin64/PROYECTOS_QUARTUS/AES/Desencriptador/Modules/AddRound/AddRound_tb.vhd Line: 21
+    Info (12023): Found entity 1: AddRound_tb File: C:/Quartus/quartus/bin64/PROYECTOS_QUARTUS/AES/Desencriptador/Modules/AddRound/AddRound_tb.vhd Line: 18
 Info (12021): Found 2 design units, including 1 entities, in source file modules/subbytes/subbytes.vhd
-    Info (12022): Found design unit 1: SubBytes-Behavioral File: E:/ricki/Documents/TEC/4Semestre/QuartusProjects/AES/Desencriptador/Modules/SubBytes/SubBytes.vhd Line: 34
-    Info (12023): Found entity 1: SubBytes File: E:/ricki/Documents/TEC/4Semestre/QuartusProjects/AES/Desencriptador/Modules/SubBytes/SubBytes.vhd Line: 22
+    Info (12022): Found design unit 1: SubBytes-Behavioral File: C:/Quartus/quartus/bin64/PROYECTOS_QUARTUS/AES/Desencriptador/Modules/SubBytes/SubBytes.vhd Line: 24
+    Info (12023): Found entity 1: SubBytes File: C:/Quartus/quartus/bin64/PROYECTOS_QUARTUS/AES/Desencriptador/Modules/SubBytes/SubBytes.vhd Line: 11
 Info (12021): Found 2 design units, including 1 entities, in source file modules/subbytes/subbytes_tb.vhd
-    Info (12022): Found design unit 1: SubBytes_tb-tb_architecture File: E:/ricki/Documents/TEC/4Semestre/QuartusProjects/AES/Desencriptador/Modules/SubBytes/SubBytes_tb.vhd Line: 26
-    Info (12023): Found entity 1: SubBytes_tb File: E:/ricki/Documents/TEC/4Semestre/QuartusProjects/AES/Desencriptador/Modules/SubBytes/SubBytes_tb.vhd Line: 22
+    Info (12022): Found design unit 1: SubBytes_tb-testbench File: C:/Quartus/quartus/bin64/PROYECTOS_QUARTUS/AES/Desencriptador/Modules/SubBytes/SubBytes_tb.vhd Line: 25
+    Info (12023): Found entity 1: SubBytes_tb File: C:/Quartus/quartus/bin64/PROYECTOS_QUARTUS/AES/Desencriptador/Modules/SubBytes/SubBytes_tb.vhd Line: 21
 Info (12021): Found 2 design units, including 1 entities, in source file modules/shiftrow/shiftrow.vhd
-    Info (12022): Found design unit 1: ShiftRow-Behavioral File: E:/ricki/Documents/TEC/4Semestre/QuartusProjects/AES/Desencriptador/Modules/ShiftRow/ShiftRow.vhd Line: 34
-    Info (12023): Found entity 1: ShiftRow File: E:/ricki/Documents/TEC/4Semestre/QuartusProjects/AES/Desencriptador/Modules/ShiftRow/ShiftRow.vhd Line: 22
+    Info (12022): Found design unit 1: ShiftRow-Behavioral File: C:/Quartus/quartus/bin64/PROYECTOS_QUARTUS/AES/Desencriptador/Modules/ShiftRow/ShiftRow.vhd Line: 34
+    Info (12023): Found entity 1: ShiftRow File: C:/Quartus/quartus/bin64/PROYECTOS_QUARTUS/AES/Desencriptador/Modules/ShiftRow/ShiftRow.vhd Line: 22
 Info (12021): Found 2 design units, including 1 entities, in source file modules/mixcolumn/mixcolumn.vhd
-    Info (12022): Found design unit 1: MixColumn-Behavioral File: E:/ricki/Documents/TEC/4Semestre/QuartusProjects/AES/Desencriptador/Modules/MixColumn/MixColumn.vhd Line: 34
-    Info (12023): Found entity 1: MixColumn File: E:/ricki/Documents/TEC/4Semestre/QuartusProjects/AES/Desencriptador/Modules/MixColumn/MixColumn.vhd Line: 22
+    Info (12022): Found design unit 1: MixColumn-Behavioral File: C:/Quartus/quartus/bin64/PROYECTOS_QUARTUS/AES/Desencriptador/Modules/MixColumn/MixColumn.vhd Line: 34
+    Info (12023): Found entity 1: MixColumn File: C:/Quartus/quartus/bin64/PROYECTOS_QUARTUS/AES/Desencriptador/Modules/MixColumn/MixColumn.vhd Line: 22
 Info (12021): Found 2 design units, including 1 entities, in source file modules/shiftrow/shiftrow_tb.vhd
-    Info (12022): Found design unit 1: ShiftRow_tb-tb_architecture File: E:/ricki/Documents/TEC/4Semestre/QuartusProjects/AES/Desencriptador/Modules/ShiftRow/ShiftRow_tb.vhd Line: 26
-    Info (12023): Found entity 1: ShiftRow_tb File: E:/ricki/Documents/TEC/4Semestre/QuartusProjects/AES/Desencriptador/Modules/ShiftRow/ShiftRow_tb.vhd Line: 22
+    Info (12022): Found design unit 1: ShiftRow_tb-tb_architecture File: C:/Quartus/quartus/bin64/PROYECTOS_QUARTUS/AES/Desencriptador/Modules/ShiftRow/ShiftRow_tb.vhd Line: 26
+    Info (12023): Found entity 1: ShiftRow_tb File: C:/Quartus/quartus/bin64/PROYECTOS_QUARTUS/AES/Desencriptador/Modules/ShiftRow/ShiftRow_tb.vhd Line: 22
 Info (12021): Found 2 design units, including 1 entities, in source file modules/mixcolumn/mixcolumn_tb.vhd
-    Info (12022): Found design unit 1: MixColumn_tb-tb_architecture File: E:/ricki/Documents/TEC/4Semestre/QuartusProjects/AES/Desencriptador/Modules/MixColumn/MixColumn_tb.vhd Line: 26
-    Info (12023): Found entity 1: MixColumn_tb File: E:/ricki/Documents/TEC/4Semestre/QuartusProjects/AES/Desencriptador/Modules/MixColumn/MixColumn_tb.vhd Line: 22
+    Info (12022): Found design unit 1: MixColumn_tb-tb_architecture File: C:/Quartus/quartus/bin64/PROYECTOS_QUARTUS/AES/Desencriptador/Modules/MixColumn/MixColumn_tb.vhd Line: 26
+    Info (12023): Found entity 1: MixColumn_tb File: C:/Quartus/quartus/bin64/PROYECTOS_QUARTUS/AES/Desencriptador/Modules/MixColumn/MixColumn_tb.vhd Line: 22
 Info (12127): Elaborating entity "Top" for the top level hierarchy
-Warning (10036): Verilog HDL or VHDL warning at Top.vhd(38): object "internal_signal" assigned a value but never read File: E:/ricki/Documents/TEC/4Semestre/QuartusProjects/AES/Desencriptador/Top.vhd Line: 38
+Warning (10036): Verilog HDL or VHDL warning at Top.vhd(38): object "internal_signal" assigned a value but never read File: C:/Quartus/quartus/bin64/PROYECTOS_QUARTUS/AES/Desencriptador/Top.vhd Line: 38
 Info (286030): Timing-Driven Synthesis is running
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
@@ -304,9 +304,9 @@ Info (21057): Implemented 6 device resources after synthesis - the final resourc
     Info (21059): Implemented 2 output pins
     Info (21061): Implemented 2 logic cells
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 2 warnings
-    Info: Peak virtual memory: 4825 megabytes
-    Info: Processing ended: Wed Apr 24 12:53:08 2024
-    Info: Elapsed time: 00:00:18
-    Info: Total CPU time (on all processors): 00:00:24
+    Info: Peak virtual memory: 4818 megabytes
+    Info: Processing ended: Sun Apr 28 18:03:10 2024
+    Info: Elapsed time: 00:00:15
+    Info: Total CPU time (on all processors): 00:00:12
 
 
