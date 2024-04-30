@@ -12,73 +12,130 @@
 --
 ----------------------------------------------------------------------------------
 
--- Commonly used libraries
-library IEEE;
-use IEEE.std_logic_1164.all;
-use IEEE.numeric_std.all;
-use IEEE.std_logic_unsigned.all;
+library ieee; 
+use ieee.std_logic_1164.all;
+-- Packages use for arithmetic operations
+use IEEE.NUMERIC_STD.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
--- Entity declaration for testbench
+-- Testbench entity does not include any Port definition
 entity ShiftRows_tb is
-end ShiftRows_tb;
+end entity ShiftRows_tb;
 
--- Architecture definition for testbench
-architecture tb_architecture of ShiftRows_tb is
-
-     -- Component declaration for DUT (Device Under Test)
+architecture testbench of ShiftRows_tb is
+    -- Component to be simulated declaration
     component ShiftRows
         Port (
-            input_port_1 : in std_logic;
-            input_port_2 : in std_logic;
-            output_port_1 : out std_logic;
-            output_port_2 : out std_logic
+            clk    : in  std_logic;
+            rst    : in  std_logic;
+            enable : in  std_logic;
+            finish : out std_logic;
+            DataIn : in  std_logic_vector(127 downto 0);
+            DataOut: out std_logic_vector(127 downto 0)
         );
     end component;
 
-    -- Signals declaration
-    signal input_port_1_tb : std_logic := '0';  -- Test input signals
-    signal input_port_2_tb : std_logic := '0';
-    signal output_port_1_tb : std_logic;  -- Test output signals
-    signal output_port_2_tb : std_logic;
-	 
-	 -- Constants declaration
-    constant CLK_PERIOD : time := 10 ns;  -- Clock period (adjust as needed)
+    -- Declare the input, output and clock signals used to instantiate the DUT
+     -- Input Signals for test bench
+    signal clk_tb     : std_logic := '0';
+    signal rst_tb     : std_logic := '0';
+    signal enable_tb  : std_logic := '0';
+    signal DataIn_tb  : std_logic_vector(127 downto 0) := (others => '0');
+   
+    -- Output Signals for test bench
+    signal finish_tb  : std_logic;
+    signal DataOut_tb : std_logic_vector(127 downto 0);
+     
+     -- Clock period definitions
+    constant clk_period : time := 100 ns;
 
-	-- Instantiate the DUT
-    begin
-        dut: ShiftRows
-            port map (
-                input_port_1 => input_port_1_tb,
-                input_port_2 => input_port_2_tb,
-                output_port_1 => output_port_1_tb,
-                output_port_2 => output_port_2_tb
-            );
-	 
-    -- Clock process
-	process
-	begin
-		 while now < 1000 ns loop  -- Simulate for 1000 ns
-			  wait for CLK_PERIOD / 2;
-			  input_port_1_tb <= not input_port_1_tb;  -- Toggle the clock
-		 end loop;
-		 wait;
-	end process;
+begin
+    -- Instantiate the ShiftRows component
+    uut : ShiftRows
+        port map (
+            clk     => clk_tb,
+            rst     => rst_tb,
+            enable  => enable_tb,
+            finish  => finish_tb,
+            DataIn  => DataIn_tb,
+            DataOut => DataOut_tb
+        );
 
+   -- Clock process to define its waveform, no sensitivity list
+   clk_process: process
+   begin
+        clk_tb <= '0';
+        wait for clk_period/2;
+        clk_tb <= '1';
+        wait for clk_period/2;
+   end process;
 
+-- Stimulus process (test cases)
+process
+begin
+    -- hold reset state for 100 ns.
+    rst_tb    <= '1';
+    wait for clk_period;
 
-    -- Stimulus process
-    process
-    begin
-        -- Stimulus generation here
-        -- You can write test vectors or any stimuli for your inputs here
-        -- Example:
-        input_port_2_tb <= '0';
-        wait for 20 ns;
-        input_port_2_tb <= '1';
-        wait for 40 ns;
-        input_port_2_tb <= '0';
-        wait;
+    -- Input data, case 1
+    -- BEGIN: Case 1
+    DataIn_tb <= x"13a77b8100c19ef63f2c0dde4c60303a";
+    rst_tb    <= '0';
+    enable_tb <= '1'; -- Signal from Master FSM to start transformation
+    wait for 200 ns;
+    
+    -- Master FSM sends an acknowledge signal to send finish signal back to '0'
+    enable_tb <= '0';
+    wait for 100 ns;
+
+    wait; -- Continue until end of simulation time
+    --End: Case 1
+		
+--		-- Input data, case 2
+--		-- BEGIN: Case 2
+--        DataIn_tb <= x"72ed6c83al2806d85755fa4d9d953b0c";
+--        rst_tb    <= '0';
+--        enable_tb <= '1'; -- Signal from Master FSM to start transfomation
+--      wait for 200 ns;
+--          
+--        -- Master FSM sends an acknowledge signal to send finish signal back to '0'
+--        enable_tb <= '0';
+--        wait for 100 ns;
+
+		  
+--      wait; -- Continue until end of simulation time
+--		--End: Case 2
+		
+		-- Input data, case 3
+--		-- BEGIN: Case 3
+--        DataIn_tb <= x"f5c98952bda3bb6347f1c0bb33714742";
+--        rst_tb    <= '0';
+--        enable_tb <= '1'; -- Signal from Master FSM to start transfomation
+--      wait for 200 ns;
+--          
+--        -- Master FSM sends an acknowledge signal to send finish signal back to '0'
+--        enable_tb <= '0';
+--        wait for 100 ns;
+		
+--
+--      wait; -- Continue until end of simulation time
+--		--End: Case 3
+		
+		-- Input data, case 4
+--		-- BEGIN: Case 4
+--        DataIn_tb <= x"abcdef0123456789abcdef0123456789";
+--        rst_tb    <= '0';
+--        enable_tb <= '1'; -- Signal from Master FSM to start transfomation
+--      wait for 200 ns;
+--          
+--        -- Master FSM sends an acknowledge signal to send finish signal back to '0'
+--        enable_tb <= '0';
+--        wait for 100 ns;
+
+--
+--      wait; -- Continue until end of simulation time
+--		--End: Case 4
+		
     end process;
 
-    
-end architecture tb_architecture;
+end architecture testbench;

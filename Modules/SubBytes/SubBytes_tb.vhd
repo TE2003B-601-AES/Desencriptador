@@ -11,74 +11,91 @@
 -- Additional Comments: 
 --
 ----------------------------------------------------------------------------------
-
 -- Commonly used libraries
 library IEEE;
-use IEEE.std_logic_1164.all;
-use IEEE.numeric_std.all;
-use IEEE.std_logic_unsigned.all;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.STD_LOGIC_ARITH.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
--- Entity declaration for testbench
+-- Entity declaration
 entity SubBytes_tb is
-end SubBytes_tb;
+end entity SubBytes_tb;
 
--- Architecture definition for testbench
-architecture tb_architecture of SubBytes_tb is
+-- Architecture definition
+architecture testbench of SubBytes_tb is
+  component SubBytes is
+    port (
+      sbIn : in std_logic_vector(127 downto 0);
+      start_DECSubBytes  : in std_logic;
+      Clk    : in std_logic;
+      reset    : in std_logic;
+      finish_DECSubBytes : out std_logic;
+      sbOut : out std_logic_vector(127 downto 0)
+    );
+  end component;
+  
+  -- Declare the input, output, and clock signals used to instantiate the DUT
+  signal DECclk_tb    : std_logic := '0';  -- Testbench clock signal
+  signal DECrst_tb    : std_logic := '0';  -- Testbench reset signal
+  signal DECstart_tb  : std_logic := '0';  -- Start signal to DUT
+  signal DECsbIn_tb : std_logic_vector(127 downto 0) := (others => '0');  -- Test data
+  
+  -- Output Signals for test bench
+  signal DECfinish_tb : std_logic;  -- Finish signal from DUT
+  signal DECsbOut_tb : std_logic_vector(127 downto 0);  -- Output data from DUT
+   
+  constant clk_period : time := 100 ns;  -- Clock period for simulation
 
-     -- Component declaration for DUT (Device Under Test)
-    component SubBytes
-        Port (
-            input_port_1 : in std_logic;
-            input_port_2 : in std_logic;
-            output_port_1 : out std_logic;
-            output_port_2 : out std_logic
-        );
-    end component;
+begin
+  uut: SubBytes 
+    port map (
+      sbIn => DECsbIn_tb,
+      start_DECSubBytes  => DECstart_tb,
+      Clk    => DECclk_tb,
+      reset    => DECrst_tb,
+      finish_DECSubBytes => DECfinish_tb,
+      sbOut => DECsbOut_tb
+    );
 
-    -- Signals declaration
-    signal input_port_1_tb : std_logic := '0';  -- Test input signals
-    signal input_port_2_tb : std_logic := '0';
-    signal output_port_1_tb : std_logic;  -- Test output signals
-    signal output_port_2_tb : std_logic;
+  clk_process: process
+  begin
+      DECclk_tb <= not DECclk_tb after clk_period/2; -- Clock generation
+      wait for clk_period/2;
+  end process;
+  
+  -- Stimulus process (test cases)
+  stimulus_P: process
+  begin
+    -- Hold reset state for a few clock cycles.
+    DECrst_tb <= '1';
+    wait for clk_period * 5; -- Adjusted for 5 clock cycles
+
+    -- Release reset
+    DECrst_tb <= '0';
+    wait for clk_period;
+
+    -- Input data
+	 -- First Case
+    --DECsbIn_tb <= x"D4E0B81E27BFB44111985D52AEF1E530";
 	 
-	 -- Constants declaration
-    constant CLK_PERIOD : time := 10 ns;  -- Clock period (adjust as needed)
-
-	-- Instantiate the DUT
-    begin
-        dut: SubBytes
-            port map (
-                input_port_1 => input_port_1_tb,
-                input_port_2 => input_port_2_tb,
-                output_port_1 => output_port_1_tb,
-                output_port_2 => output_port_2_tb
-            );
+	 --Second Case
+	 --DECsbIn_tb <= x"52096AD53036A538BF40A39E81F3D7FB";
 	 
-    -- Clock process
-	process
-	begin
-		 while now < 1000 ns loop  -- Simulate for 1000 ns
-			  wait for CLK_PERIOD / 2;
-			  input_port_1_tb <= not input_port_1_tb;  -- Toggle the clock
-		 end loop;
-		 wait;
-	end process;
+	 --Third Case
+	   DECsbIn_tb <= x"E63749BAB7DFA44CF286E4A2E218754A";
+
+    -- Start operation
+    DECstart_tb <= '1'; 
+    wait for clk_period * 2; -- Adjusted for 2 clock cycles
+
+    -- End operation
+    DECstart_tb <= '0'; 
+    wait for clk_period * 5; -- Adjusted for 5 clock cycles
+
+    wait; -- Continue until end of simulation time
+  end process;
+
+end architecture testbench;
 
 
 
-    -- Stimulus process
-    process
-    begin
-        -- Stimulus generation here
-        -- You can write test vectors or any stimuli for your inputs here
-        -- Example:
-        input_port_2_tb <= '0';
-        wait for 20 ns;
-        input_port_2_tb <= '1';
-        wait for 40 ns;
-        input_port_2_tb <= '0';
-        wait;
-    end process;
-
-    
-end architecture tb_architecture;

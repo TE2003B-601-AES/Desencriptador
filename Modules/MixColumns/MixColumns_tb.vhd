@@ -12,73 +12,82 @@
 --
 ----------------------------------------------------------------------------------
 
--- Commonly used libraries
 library IEEE;
-use IEEE.std_logic_1164.all;
-use IEEE.numeric_std.all;
-use IEEE.std_logic_unsigned.all;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.NUMERIC_STD.ALL;
 
--- Entity declaration for testbench
 entity MixColumns_tb is
 end MixColumns_tb;
 
--- Architecture definition for testbench
-architecture tb_architecture of MixColumns_tb is
-
-     -- Component declaration for DUT (Device Under Test)
+architecture behavior of MixColumns_tb is
     component MixColumns
-        Port (
-            input_port_1 : in std_logic;
-            input_port_2 : in std_logic;
-            output_port_1 : out std_logic;
-            output_port_2 : out std_logic
+        port(
+            clk : in STD_LOGIC;
+            rst : in STD_LOGIC; -- Reset signal
+            enable : in STD_LOGIC; -- Enable signal
+            state_in : in STD_LOGIC_VECTOR (127 downto 0);
+            state_out : out STD_LOGIC_VECTOR (127 downto 0);
+            finish : out STD_LOGIC -- Signal to indicate completion
         );
     end component;
 
-    -- Signals declaration
-    signal input_port_1_tb : std_logic := '0';  -- Test input signals
-    signal input_port_2_tb : std_logic := '0';
-    signal output_port_1_tb : std_logic;  -- Test output signals
-    signal output_port_2_tb : std_logic;
+    signal clk : std_logic := '0';
+    signal rst : std_logic;
+    signal enable : std_logic;
+    signal state_in : std_logic_vector(127 downto 0);
+    signal state_out : std_logic_vector(127 downto 0);
+    signal finish : std_logic;
 	 
-	 -- Constants declaration
-    constant CLK_PERIOD : time := 10 ns;  -- Clock period (adjust as needed)
+    constant clk_period : time := 20 ns; -- Clock period declaration
 
-	-- Instantiate the DUT
+begin
+    clk_process : process
     begin
-        dut: MixColumns
-            port map (
-                input_port_1 => input_port_1_tb,
-                input_port_2 => input_port_2_tb,
-                output_port_1 => output_port_1_tb,
-                output_port_2 => output_port_2_tb
-            );
-	 
-    -- Clock process
-	process
-	begin
-		 while now < 1000 ns loop  -- Simulate for 1000 ns
-			  wait for CLK_PERIOD / 2;
-			  input_port_1_tb <= not input_port_1_tb;  -- Toggle the clock
-		 end loop;
-		 wait;
-	end process;
-
-
-
-    -- Stimulus process
-    process
-    begin
-        -- Stimulus generation here
-        -- You can write test vectors or any stimuli for your inputs here
-        -- Example:
-        input_port_2_tb <= '0';
-        wait for 20 ns;
-        input_port_2_tb <= '1';
-        wait for 40 ns;
-        input_port_2_tb <= '0';
-        wait;
+        clk <= '0';
+        wait for clk_period/2;
+        clk <= '1';
+        wait for clk_period/2;
     end process;
 
-    
-end architecture tb_architecture;
+    uut: MixColumns port map (
+        clk => clk,
+        rst => rst,
+        enable => enable,
+        state_in => state_in,
+        state_out => state_out,
+        finish => finish
+    );
+
+    stim_proc: process
+    begin
+        -- Initialize inputs
+        rst <= '1';
+        enable <= '0';
+        state_in <= (others => '0');
+        wait for clk_period * 2; -- Wait for the system to reset
+
+        rst <= '0';
+        enable <= '1'; -- Enable processing
+
+        -- Set the test matrix
+        state_in <= x"D4BF5D30E0B452AEB84111F11E2798E5"; -- Test matrix input
+		  --state_in <= x"1A2B3C4D5E6F708192A3B4C5D6E7F809";  --Matriz prueba 2
+		  --state_in <= x"EFBEADDEEDCAFE123456789ABCDEF010"; --Matriz prueba 3
+        wait for clk_period * 10; -- Wait for enough clock cycles for processing to potentially complete
+
+        enable <= '0'; -- Disable further processing
+
+        -- Check the result only after the finish signal is asserted
+        wait until finish = '1';
+        assert state_out = x"79EB2A2A5417705EB20BE9D6889146D5"
+		  --assert state_out = x"84CBDC4385FA3D72B2F53A7BD81F5097"; --Matriz prueba 2
+	     --assert state_out = x"1CADC8F386E48D132BB8532B1651DEDF"; --Matriz prueba 3
+            report "Test failed: output does not match expected value"
+            severity error;
+
+        -- Optionally, add more tests here or re-enable with different data
+
+        -- Terminate simulation
+        wait;
+    end process;
+end behavior;
