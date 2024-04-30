@@ -1,5 +1,5 @@
 Analysis & Synthesis report for Desencriptador
-Mon Apr 29 09:54:39 2024
+Tue Apr 30 09:50:20 2024
 Quartus Prime Version 21.1.0 Build 842 10/21/2021 SJ Lite Edition
 
 
@@ -10,13 +10,7 @@ Quartus Prime Version 21.1.0 Build 842 10/21/2021 SJ Lite Edition
   2. Analysis & Synthesis Summary
   3. Analysis & Synthesis Settings
   4. Parallel Compilation
-  5. Analysis & Synthesis Source Files Read
-  6. Analysis & Synthesis Resource Usage Summary
-  7. Analysis & Synthesis Resource Utilization by Entity
-  8. General Register Statistics
-  9. Post-Synthesis Netlist Statistics for Top Partition
- 10. Elapsed Time Per Partition
- 11. Analysis & Synthesis Messages
+  5. Analysis & Synthesis Messages
 
 
 
@@ -43,22 +37,22 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Mon Apr 29 09:54:39 2024       ;
+; Analysis & Synthesis Status        ; Failed - Tue Apr 30 09:50:20 2024           ;
 ; Quartus Prime Version              ; 21.1.0 Build 842 10/21/2021 SJ Lite Edition ;
 ; Revision Name                      ; Desencriptador                              ;
 ; Top-level Entity Name              ; Top                                         ;
 ; Family                             ; MAX 10                                      ;
-; Total logic elements               ; 2                                           ;
-;     Total combinational functions  ; 2                                           ;
-;     Dedicated logic registers      ; 0                                           ;
-; Total registers                    ; 0                                           ;
-; Total pins                         ; 4                                           ;
-; Total virtual pins                 ; 0                                           ;
-; Total memory bits                  ; 0                                           ;
-; Embedded Multiplier 9-bit elements ; 0                                           ;
-; Total PLLs                         ; 0                                           ;
-; UFM blocks                         ; 0                                           ;
-; ADC blocks                         ; 0                                           ;
+; Total logic elements               ; N/A until Partition Merge                   ;
+;     Total combinational functions  ; N/A until Partition Merge                   ;
+;     Dedicated logic registers      ; N/A until Partition Merge                   ;
+; Total registers                    ; N/A until Partition Merge                   ;
+; Total pins                         ; N/A until Partition Merge                   ;
+; Total virtual pins                 ; N/A until Partition Merge                   ;
+; Total memory bits                  ; N/A until Partition Merge                   ;
+; Embedded Multiplier 9-bit elements ; N/A until Partition Merge                   ;
+; Total PLLs                         ; N/A until Partition Merge                   ;
+; UFM blocks                         ; N/A until Partition Merge                   ;
+; ADC blocks                         ; N/A until Partition Merge                   ;
 +------------------------------------+---------------------------------------------+
 
 
@@ -153,8 +147,8 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------+-------------+
 ; Processors                 ; Number      ;
 +----------------------------+-------------+
-; Number detected on machine ; 8           ;
-; Maximum allowed            ; 8           ;
+; Number detected on machine ; 12          ;
+; Maximum allowed            ; 12          ;
 ;                            ;             ;
 ; Average used               ; 1.00        ;
 ; Maximum used               ; 1           ;
@@ -164,149 +158,54 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------+-------------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                       ;
-+----------------------------------+-----------------+-----------------+-----------------------------------------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path                                                ; Library ;
-+----------------------------------+-----------------+-----------------+-----------------------------------------------------------------------------+---------+
-; Top.vhd                          ; yes             ; User VHDL File  ; E:/ricki/Documents/TEC/4Semestre/QuartusProjects/AES/Desencriptador/Top.vhd ;         ;
-+----------------------------------+-----------------+-----------------+-----------------------------------------------------------------------------+---------+
-
-
-+------------------------------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary                      ;
-+---------------------------------------------+--------------------+
-; Resource                                    ; Usage              ;
-+---------------------------------------------+--------------------+
-; Estimated Total logic elements              ; 2                  ;
-;                                             ;                    ;
-; Total combinational functions               ; 2                  ;
-; Logic element usage by number of LUT inputs ;                    ;
-;     -- 4 input functions                    ; 0                  ;
-;     -- 3 input functions                    ; 0                  ;
-;     -- <=2 input functions                  ; 2                  ;
-;                                             ;                    ;
-; Logic elements by mode                      ;                    ;
-;     -- normal mode                          ; 2                  ;
-;     -- arithmetic mode                      ; 0                  ;
-;                                             ;                    ;
-; Total registers                             ; 0                  ;
-;     -- Dedicated logic registers            ; 0                  ;
-;     -- I/O registers                        ; 0                  ;
-;                                             ;                    ;
-; I/O pins                                    ; 4                  ;
-;                                             ;                    ;
-; Embedded Multiplier 9-bit elements          ; 0                  ;
-;                                             ;                    ;
-; Maximum fan-out node                        ; input_port_1~input ;
-; Maximum fan-out                             ; 2                  ;
-; Total fan-out                               ; 10                 ;
-; Average fan-out                             ; 1.00               ;
-+---------------------------------------------+--------------------+
-
-
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                ;
-+----------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+---------------------+-------------+--------------+
-; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; UFM Blocks ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; ADC blocks ; Full Hierarchy Name ; Entity Name ; Library Name ;
-+----------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+---------------------+-------------+--------------+
-; |Top                       ; 2 (2)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 4    ; 0            ; 0          ; |Top                ; Top         ; work         ;
-+----------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+---------------------+-------------+--------------+
-Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
-
-
-+------------------------------------------------------+
-; General Register Statistics                          ;
-+----------------------------------------------+-------+
-; Statistic                                    ; Value ;
-+----------------------------------------------+-------+
-; Total registers                              ; 0     ;
-; Number of registers using Synchronous Clear  ; 0     ;
-; Number of registers using Synchronous Load   ; 0     ;
-; Number of registers using Asynchronous Clear ; 0     ;
-; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 0     ;
-; Number of registers using Preset             ; 0     ;
-+----------------------------------------------+-------+
-
-
-+-----------------------------------------------------+
-; Post-Synthesis Netlist Statistics for Top Partition ;
-+-----------------------+-----------------------------+
-; Type                  ; Count                       ;
-+-----------------------+-----------------------------+
-; boundary_port         ; 4                           ;
-; cycloneiii_lcell_comb ; 2                           ;
-;     normal            ; 2                           ;
-;         2 data inputs ; 2                           ;
-;                       ;                             ;
-; Max LUT depth         ; 1.00                        ;
-; Average LUT depth     ; 1.00                        ;
-+-----------------------+-----------------------------+
-
-
-+-------------------------------+
-; Elapsed Time Per Partition    ;
-+----------------+--------------+
-; Partition Name ; Elapsed Time ;
-+----------------+--------------+
-; Top            ; 00:00:00     ;
-+----------------+--------------+
-
-
 +-------------------------------+
 ; Analysis & Synthesis Messages ;
 +-------------------------------+
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 21.1.0 Build 842 10/21/2021 SJ Lite Edition
-    Info: Processing started: Mon Apr 29 09:54:18 2024
+    Info: Processing started: Tue Apr 30 09:50:08 2024
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Desencriptador -c Desencriptador
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
-Info (20030): Parallel compilation is enabled and will use 8 of the 8 processors detected
+Info (20030): Parallel compilation is enabled and will use 12 of the 12 processors detected
 Info (12021): Found 2 design units, including 1 entities, in source file top.vhd
-    Info (12022): Found design unit 1: Top-Behavioral File: E:/ricki/Documents/TEC/4Semestre/QuartusProjects/AES/Desencriptador/Top.vhd Line: 35
-    Info (12023): Found entity 1: Top File: E:/ricki/Documents/TEC/4Semestre/QuartusProjects/AES/Desencriptador/Top.vhd Line: 23
+    Info (12022): Found design unit 1: Top-Behavioral File: C:/Quartus/quartus/bin64/PROYECTOS_QUARTUS/AES/Desencriptador/Top.vhd Line: 35
+    Info (12023): Found entity 1: Top File: C:/Quartus/quartus/bin64/PROYECTOS_QUARTUS/AES/Desencriptador/Top.vhd Line: 23
 Info (12021): Found 2 design units, including 1 entities, in source file top_tb.vhd
-    Info (12022): Found design unit 1: Top_tb-tb_architecture File: E:/ricki/Documents/TEC/4Semestre/QuartusProjects/AES/Desencriptador/Top_tb.vhd Line: 26
-    Info (12023): Found entity 1: Top_tb File: E:/ricki/Documents/TEC/4Semestre/QuartusProjects/AES/Desencriptador/Top_tb.vhd Line: 22
+    Info (12022): Found design unit 1: Top_tb-tb_architecture File: C:/Quartus/quartus/bin64/PROYECTOS_QUARTUS/AES/Desencriptador/Top_tb.vhd Line: 26
+    Info (12023): Found entity 1: Top_tb File: C:/Quartus/quartus/bin64/PROYECTOS_QUARTUS/AES/Desencriptador/Top_tb.vhd Line: 22
 Info (12021): Found 2 design units, including 1 entities, in source file modules/addroundkey/addroundkey.vhd
-    Info (12022): Found design unit 1: AddRoundKey-InvAddRoundKey_Arch File: E:/ricki/Documents/TEC/4Semestre/QuartusProjects/AES/Desencriptador/Modules/AddRoundKey/AddRoundKey.vhd Line: 36
-    Info (12023): Found entity 1: AddRoundKey File: E:/ricki/Documents/TEC/4Semestre/QuartusProjects/AES/Desencriptador/Modules/AddRoundKey/AddRoundKey.vhd Line: 27
+    Info (12022): Found design unit 1: AddRoundKey-InvAddRoundKey_Arch File: C:/Quartus/quartus/bin64/PROYECTOS_QUARTUS/AES/Desencriptador/Modules/AddRoundKey/AddRoundKey.vhd Line: 36
+    Info (12023): Found entity 1: AddRoundKey File: C:/Quartus/quartus/bin64/PROYECTOS_QUARTUS/AES/Desencriptador/Modules/AddRoundKey/AddRoundKey.vhd Line: 27
 Info (12021): Found 2 design units, including 1 entities, in source file modules/addroundkey/addroundkey_tb.vhd
-    Info (12022): Found design unit 1: AddRoundKey_tb-InvAddRoundKey_Arch File: E:/ricki/Documents/TEC/4Semestre/QuartusProjects/AES/Desencriptador/Modules/AddRoundKey/AddRoundKey_tb.vhd Line: 21
-    Info (12023): Found entity 1: AddRoundKey_tb File: E:/ricki/Documents/TEC/4Semestre/QuartusProjects/AES/Desencriptador/Modules/AddRoundKey/AddRoundKey_tb.vhd Line: 18
+    Info (12022): Found design unit 1: AddRoundKey_tb-InvAddRoundKey_Arch File: C:/Quartus/quartus/bin64/PROYECTOS_QUARTUS/AES/Desencriptador/Modules/AddRoundKey/AddRoundKey_tb.vhd Line: 21
+    Info (12023): Found entity 1: AddRoundKey_tb File: C:/Quartus/quartus/bin64/PROYECTOS_QUARTUS/AES/Desencriptador/Modules/AddRoundKey/AddRoundKey_tb.vhd Line: 18
 Info (12021): Found 2 design units, including 1 entities, in source file modules/mixcolumns/mixcolumns.vhd
-    Info (12022): Found design unit 1: MixColumns-Behavioral File: E:/ricki/Documents/TEC/4Semestre/QuartusProjects/AES/Desencriptador/Modules/MixColumns/MixColumns.vhd Line: 34
-    Info (12023): Found entity 1: MixColumns File: E:/ricki/Documents/TEC/4Semestre/QuartusProjects/AES/Desencriptador/Modules/MixColumns/MixColumns.vhd Line: 22
+    Info (12022): Found design unit 1: MixColumns-Behavioral File: C:/Quartus/quartus/bin64/PROYECTOS_QUARTUS/AES/Desencriptador/Modules/MixColumns/MixColumns.vhd Line: 30
+    Info (12023): Found entity 1: MixColumns File: C:/Quartus/quartus/bin64/PROYECTOS_QUARTUS/AES/Desencriptador/Modules/MixColumns/MixColumns.vhd Line: 19
 Info (12021): Found 2 design units, including 1 entities, in source file modules/mixcolumns/mixcolumns_tb.vhd
-    Info (12022): Found design unit 1: MixColumns_tb-tb_architecture File: E:/ricki/Documents/TEC/4Semestre/QuartusProjects/AES/Desencriptador/Modules/MixColumns/MixColumns_tb.vhd Line: 26
-    Info (12023): Found entity 1: MixColumns_tb File: E:/ricki/Documents/TEC/4Semestre/QuartusProjects/AES/Desencriptador/Modules/MixColumns/MixColumns_tb.vhd Line: 22
+    Info (12022): Found design unit 1: MixColumns_tb-behavior File: C:/Quartus/quartus/bin64/PROYECTOS_QUARTUS/AES/Desencriptador/Modules/MixColumns/MixColumns_tb.vhd Line: 22
+    Info (12023): Found entity 1: MixColumns_tb File: C:/Quartus/quartus/bin64/PROYECTOS_QUARTUS/AES/Desencriptador/Modules/MixColumns/MixColumns_tb.vhd Line: 19
 Info (12021): Found 2 design units, including 1 entities, in source file modules/shiftrows/shiftrows.vhd
-    Info (12022): Found design unit 1: ShiftRows-Behavioral File: E:/ricki/Documents/TEC/4Semestre/QuartusProjects/AES/Desencriptador/Modules/ShiftRows/ShiftRows.vhd Line: 34
-    Info (12023): Found entity 1: ShiftRows File: E:/ricki/Documents/TEC/4Semestre/QuartusProjects/AES/Desencriptador/Modules/ShiftRows/ShiftRows.vhd Line: 22
+    Info (12022): Found design unit 1: ShiftRows-Behavioural File: C:/Quartus/quartus/bin64/PROYECTOS_QUARTUS/AES/Desencriptador/Modules/ShiftRows/ShiftRows.vhd Line: 32
+    Info (12023): Found entity 1: ShiftRows File: C:/Quartus/quartus/bin64/PROYECTOS_QUARTUS/AES/Desencriptador/Modules/ShiftRows/ShiftRows.vhd Line: 20
 Info (12021): Found 2 design units, including 1 entities, in source file modules/shiftrows/shiftrows_tb.vhd
-    Info (12022): Found design unit 1: ShiftRows_tb-tb_architecture File: E:/ricki/Documents/TEC/4Semestre/QuartusProjects/AES/Desencriptador/Modules/ShiftRows/ShiftRows_tb.vhd Line: 26
-    Info (12023): Found entity 1: ShiftRows_tb File: E:/ricki/Documents/TEC/4Semestre/QuartusProjects/AES/Desencriptador/Modules/ShiftRows/ShiftRows_tb.vhd Line: 22
+    Info (12022): Found design unit 1: ShiftRows_tb-testbench File: C:/Quartus/quartus/bin64/PROYECTOS_QUARTUS/AES/Desencriptador/Modules/ShiftRows/ShiftRows_tb.vhd Line: 25
+    Info (12023): Found entity 1: ShiftRows_tb File: C:/Quartus/quartus/bin64/PROYECTOS_QUARTUS/AES/Desencriptador/Modules/ShiftRows/ShiftRows_tb.vhd Line: 22
 Info (12021): Found 2 design units, including 1 entities, in source file modules/subbytes/subbytes.vhd
-    Info (12022): Found design unit 1: SubBytes-Behavioral File: E:/ricki/Documents/TEC/4Semestre/QuartusProjects/AES/Desencriptador/Modules/SubBytes/SubBytes.vhd Line: 34
-    Info (12023): Found entity 1: SubBytes File: E:/ricki/Documents/TEC/4Semestre/QuartusProjects/AES/Desencriptador/Modules/SubBytes/SubBytes.vhd Line: 22
+    Info (12022): Found design unit 1: SubBytes-Behavioral File: C:/Quartus/quartus/bin64/PROYECTOS_QUARTUS/AES/Desencriptador/Modules/SubBytes/SubBytes.vhd Line: 24
+    Info (12023): Found entity 1: SubBytes File: C:/Quartus/quartus/bin64/PROYECTOS_QUARTUS/AES/Desencriptador/Modules/SubBytes/SubBytes.vhd Line: 11
 Info (12021): Found 2 design units, including 1 entities, in source file modules/subbytes/subbytes_tb.vhd
-    Info (12022): Found design unit 1: SubBytes_tb-tb_architecture File: E:/ricki/Documents/TEC/4Semestre/QuartusProjects/AES/Desencriptador/Modules/SubBytes/SubBytes_tb.vhd Line: 26
-    Info (12023): Found entity 1: SubBytes_tb File: E:/ricki/Documents/TEC/4Semestre/QuartusProjects/AES/Desencriptador/Modules/SubBytes/SubBytes_tb.vhd Line: 22
-Info (12127): Elaborating entity "Top" for the top level hierarchy
-Warning (10036): Verilog HDL or VHDL warning at Top.vhd(38): object "internal_signal" assigned a value but never read File: E:/ricki/Documents/TEC/4Semestre/QuartusProjects/AES/Desencriptador/Top.vhd Line: 38
-Info (286030): Timing-Driven Synthesis is running
-Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
-    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 6 device resources after synthesis - the final resource count might be different
-    Info (21058): Implemented 2 input pins
-    Info (21059): Implemented 2 output pins
-    Info (21061): Implemented 2 logic cells
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 2 warnings
-    Info: Peak virtual memory: 4833 megabytes
-    Info: Processing ended: Mon Apr 29 09:54:39 2024
-    Info: Elapsed time: 00:00:21
-    Info: Total CPU time (on all processors): 00:00:30
+    Info (12022): Found design unit 1: SubBytes_tb-testbench File: C:/Quartus/quartus/bin64/PROYECTOS_QUARTUS/AES/Desencriptador/Modules/SubBytes/SubBytes_tb.vhd Line: 25
+    Info (12023): Found entity 1: SubBytes_tb File: C:/Quartus/quartus/bin64/PROYECTOS_QUARTUS/AES/Desencriptador/Modules/SubBytes/SubBytes_tb.vhd Line: 21
+Info (12021): Found 2 design units, including 1 entities, in source file modules/statemachine/statemachine.vhd
+    Info (12022): Found design unit 1: DE_StateMachine-DE_StateMachine_Arch File: C:/Quartus/quartus/bin64/PROYECTOS_QUARTUS/AES/Desencriptador/Modules/StateMachine/StateMachine.vhd Line: 64
+    Info (12023): Found entity 1: DE_StateMachine File: C:/Quartus/quartus/bin64/PROYECTOS_QUARTUS/AES/Desencriptador/Modules/StateMachine/StateMachine.vhd Line: 27
+Error (10482): VHDL error at Top.vhd(191): object "AddRoundKey" is used but not declared File: C:/Quartus/quartus/bin64/PROYECTOS_QUARTUS/AES/Desencriptador/Top.vhd Line: 191
+Error: Quartus Prime Analysis & Synthesis was unsuccessful. 1 error, 1 warning
+    Error: Peak virtual memory: 4782 megabytes
+    Error: Processing ended: Tue Apr 30 09:50:21 2024
+    Error: Elapsed time: 00:00:13
+    Error: Total CPU time (on all processors): 00:00:10
 
 
