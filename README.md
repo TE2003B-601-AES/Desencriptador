@@ -16,7 +16,9 @@ Desencriptador basado en AES en un FPGA
 |               |    Modules    |
 |---------------|---------------|
 |    AddRound   |     Done      |
-|    SubBytes   |     Pending   |
-|    MixColumn  |     Pending   |
-|    ShiftRow   |     Pending   |
+|    SubBytes   |     Done      |
+|    MixColumn  |     Done      |
+|    ShiftRow   |     Done      |
+|  StateMachine |  In Progress  |
+|   Top Entity  |  In Progress  |
 
